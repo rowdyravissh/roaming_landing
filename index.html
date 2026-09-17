@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roaming — Instant Global eSIM Data for Travelers</title>
+  <meta name="description" content="Instant, prepaid high-speed travel data across 160+ countries. Zero contracts, zero bill shock, ready the second you land.">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Roaming — Travel Unbounded">
+  <meta property="og:description" content="Instant digital eSIM data across 160+ countries. Land connected.">
+
+  <!-- Fonts & Tailwind CSS CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            roam: {
+              blue: '#0066FF',
+              cyan: '#00E5FF',
+              dark: '#070B14',
+              surface: '#0E1526',
+              card: '#141D34',
+              border: '#1E2B4A',
+              muted: '#8B9BB4'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom glow & glass effects */
+    .glow-cyan {
+      box-shadow: 0 0 40px -10px rgba(0, 229, 255, 0.28);
+    }
+    .glow-blue {
+      box-shadow: 0 0 50px -10px rgba(0, 102, 255, 0.35);
+    }
+    .glass-nav {
+      background: rgba(7, 11, 20, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .glass-card {
+      background: rgba(20, 29, 52, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(30, 43, 74, 0.7);
+    }
+    .glass-card:hover {
+      border-color: rgba(0, 229, 255, 0.45);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="bg-roam-dark text-white font-sans antialiased selection:bg-roam-cyan selection:text-roam-dark min-h-screen flex flex-col justify-between overflow-x-hidden">
+
+  <!-- Background Decorative Light Orbs -->
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] overflow-hidden -z-10 pointer-events-none opacity-40">
+    <div class="absolute -top-32 left-1/4 w-96 h-96 bg-roam-blue rounded-full blur-[120px]"></div>
+    <div class="absolute top-10 right-1/4 w-80 h-80 bg-roam-cyan rounded-full blur-[110px] opacity-60"></div>
+  </div>
+
+  <!-- Header / Navigation -->
+  <header class="sticky top-0 z-50 glass-nav border-b border-roam-border/60 transition-all">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-18 py-3.5 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-2.5 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-roam-cyan to-roam-blue p-0.5 shadow-lg shadow-roam-blue/25 transition-transform group-hover:scale-105">
+          <div class="w-full h-full bg-roam-dark rounded-[10px] flex items-center justify-center">
+            <svg class="w-5 h-5 text-roam-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.14 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+            </svg>
+          </div>
+        </div>
+        <div class="flex items-baseline">
+          <span class="text-2xl font-extrabold tracking-tight text-white">roaming</span>
+          <span class="w-2 h-2 rounded-full bg-roam-cyan ml-1 animate-pulse"></span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-roam-muted">
+        <a href="#destinations" class="hover:text-white transition-colors">Destinations</a>
+        <a href="#how-it-works" class="hover:text-white transition-colors">How It Works</a>
+        <a href="#compatibility" class="hover:text-white transition-colors">Device Check</a>
+        <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+      </nav>
+
+      <!-- CTA Button -->
+      <div class="flex items-center gap-3">
+        <a href="#destinations" class="relative inline-flex items-center justify-center px-5 py-2.5 text-xs sm:text-sm font-bold text-roam-dark bg-gradient-to-r from-roam-cyan to-white hover:from-white hover:to-roam-cyan rounded-full transition-all duration-300 shadow-md shadow-roam-cyan/20 hover:scale-[1.03] active:scale-[0.98]">
+          Find My Destination
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="flex-grow">
+    <section class="relative pt-12 pb-20 sm:pt-20 sm:pb-28 px-4 sm:px-6 max-w-5xl mx-auto text-center">
+      
+      <!-- Live Status Badge -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-roam-surface border border-roam-border text-xs sm:text-sm font-medium text-roam-muted mb-6 shadow-inner">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span>Instant eSIM activation live in 160+ countries</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.12] mb-6">
+        Land in any country.<br>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-roam-cyan via-white to-roam-blue">
+          Connect in seconds.
+        </span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-base sm:text-lg lg:text-xl text-roam-muted max-w-2xl mx-auto mb-10 leading-relaxed">
+        Say goodbye to costly carrier roaming fees and airport SIM queues. Instant, high-speed travel data delivered straight to your phone before you even leave the runway.
+      </p>
+
+      <!-- Instant Country Search Bar -->
+      <div class="max-w-xl mx-auto mb-12">
+        <div class="relative flex items-center bg-roam-surface/90 border border-roam-border focus-within:border-roam-cyan rounded-2xl p-2 shadow-2xl transition-all glow-blue">
+          <div class="pl-3 pr-2 text-roam-muted">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <input 
+            type="text" 
+            id="countrySearch"
+            placeholder="Where are you flying to? (e.g. Japan, France, USA)" 
+            class="w-full bg-transparent text-sm sm:text-base text-white placeholder-roam-muted focus:outline-none px-2 py-2"
+          >
+          <button 
+            type="button"
+            onclick="searchDestination()"
+            class="bg-roam-blue hover:bg-blue-600 text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-xl transition-all shrink-0"
+          >
+            Search
+          </button>
+        </div>
+        <p class="text-xs text-roam-muted mt-2.5">Popular: 
+          <a href="javascript:void(0)" onclick="quickSelect('Japan')" class="text-white hover:text-roam-cyan underline mx-1">Japan</a> • 
+          <a href="javascript:void(0)" onclick="quickSelect('United Kingdom')" class="text-white hover:text-roam-cyan underline mx-1">United Kingdom</a> • 
+          <a href="javascript:void(0)" onclick="quickSelect('Europe Regional')" class="text-white hover:text-roam-cyan underline mx-1">Europe (35+ Countries)</a> • 
+          <a href="javascript:void(0)" onclick="quickSelect('Thailand')" class="text-white hover:text-roam-cyan underline mx-1">Thailand</a>
+        </p>
+      </div>
+
+      <!-- Quick Trust Indicators -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto pt-4 border-t border-roam-border/40 text-left">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-roam-surface border border-roam-border flex items-center justify-center text-roam-cyan shrink-0">⚡</div>
+          <div>
+            <div class="text-xs sm:text-sm font-bold text-white">Instant QR</div>
+            <div class="text-[11px] text-roam-muted">No physical SIM card</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-roam-surface border border-roam-border flex items-center justify-center text-roam-cyan shrink-0">💸</div>
+          <div>
+            <div class="text-xs sm:text-sm font-bold text-white">Zero Bill Shock</div>
+            <div class="text-[11px] text-roam-muted">100% prepaid plans</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-roam-surface border border-roam-border flex items-center justify-center text-roam-cyan shrink-0">🌍</div>
+          <div>
+            <div class="text-xs sm:text-sm font-bold text-white">160+ Countries</div>
+            <div class="text-[11px] text-roam-muted">Local top-tier carriers</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-roam-surface border border-roam-border flex items-center justify-center text-roam-cyan shrink-0">🔒</div>
+          <div>
+            <div class="text-xs sm:text-sm font-bold text-white">Keep Your Number</div>
+            <div class="text-[11px] text-roam-muted">WhatsApp & iMessage stay</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Destinations Section -->
+    <section id="destinations" class="py-16 px-4 sm:px-6 max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+        <div>
+          <span class="text-xs font-bold text-roam-cyan uppercase tracking-wider">Top Traveler Picks</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Trending Destinations</h2>
+        </div>
+        <div class="text-xs text-roam-muted">
+          All packages include high-speed 4G/5G data with instant activation.
+        </div>
+      </div>
+
+      <!-- Destination Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="destinationsGrid">
+        
+        <!-- Japan Card -->
+        <div class="glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between" data-country="Japan">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <span class="text-3xl">🇯🇵</span>
+                <div>
+                  <h3 class="font-bold text-lg text-white">Japan</h3>
+                  <span class="text-xs text-roam-muted">NTT Docomo / SoftBank</span>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 text-[11px] font-semibold text-emerald-400 bg-emerald-400/10 rounded-full border border-emerald-400/20">5G Ready</span>
+            </div>
+            <div class="space-y-2 py-3 border-y border-roam-border/60 mb-4 text-xs text-roam-muted">
+              <div class="flex justify-between"><span>Data Allowance:</span> <span class="text-white font-semibold">1GB / 3GB / 10GB</span></div>
+              <div class="flex justify-between"><span>Validity:</span> <span class="text-white font-semibold">7 to 30 Days</span></div>
+              <div class="flex justify-between"><span>Tethering / Hotspot:</span> <span class="text-white font-semibold">Supported</span></div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-2">
+            <div>
+              <span class="text-xs text-roam-muted">From</span>
+              <div class="text-xl font-extrabold text-white">$4.50</div>
+            </div>
+            <button onclick="openModal('Japan', '$4.50', '🇯🇵')" class="px-4 py-2 text-xs font-bold bg-roam-blue hover:bg-blue-600 text-white rounded-xl transition-all">
+              View Plans
+            </button>
+          </div>
+        </div>
+
+        <!-- Europe Regional Card -->
+        <div class="glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between border-roam-cyan/30" data-country="Europe">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <span class="text-3xl">🇪🇺</span>
+                <div>
+                  <h3 class="font-bold text-lg text-white">Europe (35+ Countries)</h3>
+                  <span class="text-xs text-roam-muted">Vodafone / Orange / O2</span>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 text-[11px] font-semibold text-roam-cyan bg-roam-cyan/10 rounded-full border border-roam-cyan/20">Multi-Country</span>
+            </div>
+            <div class="space-y-2 py-3 border-y border-roam-border/60 mb-4 text-xs text-roam-muted">
+              <div class="flex justify-between"><span>Coverage:</span> <span class="text-white font-semibold">All EU & UK</span></div>
+              <div class="flex justify-between"><span>Validity:</span> <span class="text-white font-semibold">7 to 30 Days</span></div>
+              <div class="flex justify-between"><span>Seamless Crossing:</span> <span class="text-white font-semibold">Auto-Connect</span></div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-2">
+            <div>
+              <span class="text-xs text-roam-muted">From</span>
+              <div class="text-xl font-extrabold text-white">$5.00</div>
+            </div>
+            <button onclick="openModal('Europe Regional', '$5.00', '🇪🇺')" class="px-4 py-2 text-xs font-bold bg-roam-cyan hover:bg-cyan-400 text-roam-dark rounded-xl transition-all">
+              View Plans
+            </button>
+          </div>
+        </div>
+
+        <!-- United States Card -->
+        <div class="glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between" data-country="United States">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <span class="text-3xl">🇺🇸</span>
+                <div>
+                  <h3 class="font-bold text-lg text-white">United States</h3>
+                  <span class="text-xs text-roam-muted">AT&T / T-Mobile</span>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 text-[11px] font-semibold text-emerald-400 bg-emerald-400/10 rounded-full border border-emerald-400/20">5G Ultra</span>
+            </div>
+            <div class="space-y-2 py-3 border-y border-roam-border/60 mb-4 text-xs text-roam-muted">
+              <div class="flex justify-between"><span>Data Allowance:</span> <span class="text-white font-semibold">1GB / 5GB / Unlimited</span></div>
+              <div class="flex justify-between"><span>Validity:</span> <span class="text-white font-semibold">7 to 30 Days</span></div>
+              <div class="flex justify-between"><span>Tethering / Hotspot:</span> <span class="text-white font-semibold">Supported</span></div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-2">
+            <div>
+              <span class="text-xs text-roam-muted">From</span>
+              <div class="text-xl font-extrabold text-white">$4.50</div>
+            </div>
+            <button onclick="openModal('United States', '$4.50', '🇺🇸')" class="px-4 py-2 text-xs font-bold bg-roam-blue hover:bg-blue-600 text-white rounded-xl transition-all">
+              View Plans
+            </button>
+          </div>
+        </div>
+
+        <!-- United Kingdom Card -->
+        <div class="glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between" data-country="United Kingdom">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <span class="text-3xl">🇬🇧</span>
+                <div>
+                  <h3 class="font-bold text-lg text-white">United Kingdom</h3>
+                  <span class="text-xs text-roam-muted">EE / Vodafone UK</span>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 text-[11px] font-semibold text-emerald-400 bg-emerald-400/10 rounded-full border border-emerald-400/20">5G Fast</span>
+            </div>
+            <div class="space-y-2 py-3 border-y border-roam-border/60 mb-4 text-xs text-roam-muted">
+              <div class="flex justify-between"><span>Data Allowance:</span> <span class="text-white font-semibold">1GB / 5GB / 20GB</span></div>
+              <div class="flex justify-between"><span>Validity:</span> <span class="text-white font-semibold">7 to 30 Days</span></div>
+              <div class="flex justify-between"><span>Activation:</span> <span class="text-white font-semibold">Automatic</span></div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-2">
+            <div>
+              <span class="text-xs text-roam-muted">From</span>
+              <div class="text-xl font-extrabold text-white">$4.00</div>
+            </div>
+            <button onclick="openModal('United Kingdom', '$4.00', '🇬🇧')" class="px-4 py-2 text-xs font-bold bg-roam-blue hover:bg-blue-600 text-white rounded-xl transition-all">
+              View Plans
+            </button>
+          </div>
+        </div>
+
+        <!-- Thailand Card -->
+        <div class="glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between" data-country="Thailand">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <span class="text-3xl">🇹🇭</span>
+                <div>
+                  <h3 class="font-bold text-lg text-white">Thailand</h3>
+                  <span class="text-xs text-roam-muted">AIS / TrueMove H</span>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 text-[11px] font-semibold text-emerald-400 bg-emerald-400/10 rounded-full border border-emerald-400/20">Top Speed</span>
+            </div>
+            <div class="space-y-2 py-3 border-y border-roam-border/60 mb-4 text-xs text-roam-muted">
+              <div class="flex justify-between"><span>Data Allowance:</span> <span class="text-white font-semibold">50GB Max / 10 Days</span></div>
+              <div class="flex justify-between"><span>Validity:</span> <span class="text-white font-semibold">10 to 15 Days</span></div>
+              <div class="flex justify-between"><span>Nomad Choice:</span> <span class="text-white font-semibold">Very High Speed</span></div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-2">
+            <div>
+              <span class="text-xs text-roam-muted">From</span>
+              <div class="text-xl font-extrabold text-white">$6.00</div>
+            </div>
+            <button onclick="openModal('Thailand', '$6.00', '🇹🇭')" class="px-4 py-2 text-xs font-bold bg-roam-blue hover:bg-blue-600 text-white rounded-xl transition-all">
+              View Plans
+            </button>
+          </div>
+        </div>
+
+        <!-- Switzerland Card -->
+        <div class="glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between" data-country="Switzerland">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <span class="text-3xl">🇨🇭</span>
+                <div>
+                  <h3 class="font-bold text-lg text-white">Switzerland</h3>
+                  <span class="text-xs text-roam-muted">Swisscom / Sunrise</span>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 text-[11px] font-semibold text-emerald-400 bg-emerald-400/10 rounded-full border border-emerald-400/20">No Bill Shock</span>
+            </div>
+            <div class="space-y-2 py-3 border-y border-roam-border/60 mb-4 text-xs text-roam-muted">
+              <div class="flex justify-between"><span>Special:</span> <span class="text-white font-semibold">Avoid EU Roaming Traps</span></div>
+              <div class="flex justify-between"><span>Validity:</span> <span class="text-white font-semibold">7 to 30 Days</span></div>
+              <div class="flex justify-between"><span>Network:</span> <span class="text-white font-semibold">Premium Swisscom</span></div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-2">
+            <div>
+              <span class="text-xs text-roam-muted">From</span>
+              <div class="text-xl font-extrabold text-white">$4.80</div>
+            </div>
+            <button onclick="openModal('Switzerland', '$4.80', '🇨🇭')" class="px-4 py-2 text-xs font-bold bg-roam-blue hover:bg-blue-600 text-white rounded-xl transition-all">
+              View Plans
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-16 px-4 sm:px-6 max-w-5xl mx-auto text-center border-t border-roam-border/40">
+      <span class="text-xs font-bold text-roam-cyan uppercase tracking-wider">Simple 3-Step Setup</span>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1 mb-12">How Roaming Works</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+        <!-- Step 1 -->
+        <div class="glass-card rounded-2xl p-6 relative">
+          <div class="w-10 h-10 rounded-xl bg-roam-surface border border-roam-border flex items-center justify-center font-mono font-bold text-roam-cyan text-lg mb-4">
+            01
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Choose Your Country</h3>
+          <p class="text-xs sm:text-sm text-roam-muted leading-relaxed">
+            Pick your destination country or multi-country region and select the data package (1GB to 20GB) that fits your trip.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="glass-card rounded-2xl p-6 relative">
+          <div class="w-10 h-10 rounded-xl bg-roam-surface border border-roam-border flex items-center justify-center font-mono font-bold text-roam-cyan text-lg mb-4">
+            02
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Scan the QR Code</h3>
+          <p class="text-xs sm:text-sm text-roam-muted leading-relaxed">
+            Instantly receive your digital eSIM QR code on screen and in your inbox. Scan it in your phone settings in under 30 seconds.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="glass-card rounded-2xl p-6 relative">
+          <div class="w-10 h-10 rounded-xl bg-roam-surface border border-roam-border flex items-center justify-center font-mono font-bold text-roam-cyan text-lg mb-4">
+            03
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Land & Roam Free</h3>
+          <p class="text-xs sm:text-sm text-roam-muted leading-relaxed">
+            When your flight touches down, turn on the line and your data connects immediately to the local premier network.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Compatibility Check Section -->
+    <section id="compatibility" class="py-16 px-4 sm:px-6 max-w-4xl mx-auto">
+      <div class="glass-card rounded-3xl p-8 sm:p-10 text-center relative overflow-hidden">
+        <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-roam-blue/30 rounded-full blur-3xl -z-10"></div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-4">Is Your Device Compatible?</h2>
+        <p class="text-sm sm:text-base text-roam-muted max-w-xl mx-auto mb-8">
+          Most smartphones released from 2018 onwards (iPhone XS+, Samsung Galaxy S20+, Google Pixel 3+) support digital eSIMs.
+        </p>
+        
+        <div class="inline-flex flex-col sm:flex-row items-center gap-4 bg-roam-surface/90 border border-roam-border rounded-2xl p-4 text-xs sm:text-sm text-left max-w-md mx-auto">
+          <div class="w-10 h-10 rounded-xl bg-roam-blue/20 text-roam-cyan flex items-center justify-center shrink-0 font-bold">
+            ℹ️
+          </div>
+          <div>
+            <div class="font-bold text-white mb-0.5">Quick Dial Check:</div>
+            <div class="text-roam-muted font-mono">Dial <span class="text-roam-cyan font-bold">*#06#</span> on your device. If an <span class="text-white font-semibold">EID number</span> appears, your phone is eSIM ready!</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 px-4 sm:px-6 max-w-3xl mx-auto border-t border-roam-border/40">
+      <span class="text-xs font-bold text-roam-cyan uppercase tracking-wider block text-center">Frequently Asked Questions</span>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white text-center mt-1 mb-10">Common Questions</h2>
+
+      <div class="space-y-4 text-left">
+        <details class="glass-card rounded-2xl p-5 group cursor-pointer">
+          <summary class="font-bold text-sm sm:text-base text-white flex justify-between items-center list-none">
+            <span>Do I keep my regular phone number and WhatsApp?</span>
+            <span class="text-roam-cyan transition-transform group-open:rotate-180">▼</span>
+          </summary>
+          <p class="text-xs sm:text-sm text-roam-muted mt-3 leading-relaxed">
+            Yes! Your digital eSIM functions purely for high-speed data. Your primary SIM stays active for WhatsApp, iMessage, and 2-factor authentication codes from your bank.
+          </p>
+        </details>
+
+        <details class="glass-card rounded-2xl p-5 group cursor-pointer">
+          <summary class="font-bold text-sm sm:text-base text-white flex justify-between items-center list-none">
+            <span>When should I install the eSIM?</span>
+            <span class="text-roam-cyan transition-transform group-open:rotate-180">▼</span>
+          </summary>
+          <p class="text-xs sm:text-sm text-roam-muted mt-3 leading-relaxed">
+            You can install it before boarding your flight using your home Wi-Fi. The data validity period only begins once you land in your destination country and the eSIM connects to the local tower.
+          </p>
+        </details>
+
+        <details class="glass-card rounded-2xl p-5 group cursor-pointer">
+          <summary class="font-bold text-sm sm:text-base text-white flex justify-between items-center list-none">
+            <span>Can I share my connection (personal hotspot)?</span>
+            <span class="text-roam-cyan transition-transform group-open:rotate-180">▼</span>
+          </summary>
+          <p class="text-xs sm:text-sm text-roam-muted mt-3 leading-relaxed">
+            Yes, personal hotspot and data tethering are supported on all our travel plans, allowing you to connect your laptop or tablet seamlessly.
+          </p>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Plan Selection Modal -->
+  <div id="planModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="glass-card rounded-3xl max-w-md w-full p-6 sm:p-8 relative border-roam-border shadow-2xl">
+      <button onclick="closeModal()" class="absolute top-5 right-5 text-roam-muted hover:text-white text-xl">✕</button>
+      
+      <div class="flex items-center gap-3 mb-6">
+        <span id="modalFlag" class="text-3xl">🌍</span>
+        <div>
+          <h3 id="modalCountry" class="text-xl font-bold text-white">Destination</h3>
+          <p class="text-xs text-roam-muted">Select your data package</p>
+        </div>
+      </div>
+
+      <div class="space-y-3 mb-6">
+        <label class="flex items-center justify-between p-3.5 rounded-xl border border-roam-border hover:border-roam-cyan bg-roam-surface cursor-pointer">
+          <div class="flex items-center gap-3">
+            <input type="radio" name="planOption" checked class="text-roam-blue">
+            <div>
+              <div class="text-sm font-bold text-white">1 GB • 7 Days</div>
+              <div class="text-[11px] text-roam-muted">Light browsing & maps</div>
+            </div>
+          </div>
+          <span id="modalPrice1" class="font-bold text-roam-cyan">$4.50</span>
+        </label>
+
+        <label class="flex items-center justify-between p-3.5 rounded-xl border border-roam-cyan bg-roam-surface/90 cursor-pointer">
+          <div class="flex items-center gap-3">
+            <input type="radio" name="planOption" class="text-roam-blue">
+            <div>
+              <div class="text-sm font-bold text-white">3 GB • 15 Days <span class="ml-1 text-[10px] bg-roam-blue text-white px-1.5 py-0.5 rounded-full">POPULAR</span></div>
+              <div class="text-[11px] text-roam-muted">Social, navigation & calls</div>
+            </div>
+          </div>
+          <span class="font-bold text-roam-cyan">$9.50</span>
+        </label>
+
+        <label class="flex items-center justify-between p-3.5 rounded-xl border border-roam-border hover:border-roam-cyan bg-roam-surface cursor-pointer">
+          <div class="flex items-center gap-3">
+            <input type="radio" name="planOption" class="text-roam-blue">
+            <div>
+              <div class="text-sm font-bold text-white">10 GB • 30 Days</div>
+              <div class="text-[11px] text-roam-muted">Nomads & remote work</div>
+            </div>
+          </div>
+          <span class="font-bold text-roam-cyan">$22.00</span>
+        </label>
+      </div>
+
+      <button onclick="alert('Storefront checkout pipeline will connect here!')" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-roam-cyan to-roam-blue text-roam-dark font-extrabold text-sm hover:opacity-95 transition-all shadow-lg shadow-roam-blue/30">
+        Continue to Instant Setup
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="glass-nav border-t border-roam-border/60 py-10 px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      
+      <!-- Brand & Copyright -->
+      <div class="flex items-center gap-2">
+        <span class="text-lg font-extrabold text-white">roaming</span>
+        <span class="text-xs text-roam-muted">© 2026. All rights reserved.</span>
+      </div>
+
+      <!-- Compliance Disclosure -->
+      <p class="text-[11px] text-roam-muted text-center sm:text-left max-w-md">
+        Prepaid data-only mobile telecommunications. Does not include traditional voice calls, SMS, or 911/112 emergency calling services.
+      </p>
+
+      <!-- Links -->
+      <div class="flex items-center gap-4 text-xs text-roam-muted">
+        <a href="#how-it-works" class="hover:text-white">How It Works</a>
+        <a href="#faq" class="hover:text-white">FAQ</a>
+        <a href="#compatibility" class="hover:text-white">Compatibility</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Simple Clientside Scripts for Search & Interaction -->
+  <script>
+    function searchDestination() {
+      const input = document.getElementById('countrySearch').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('#destinationsGrid > div');
+      let found = false;
+
+      cards.forEach(card => {
+        const country = card.getAttribute('data-country').toLowerCase();
+        if (country.includes(input) || input === '') {
+          card.style.display = 'flex';
+          found = true;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Scroll smoothly down to the destinations section
+      document.getElementById('destinations').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function quickSelect(name) {
+      document.getElementById('countrySearch').value = name;
+      searchDestination();
+    }
+
+    // Modal Handlers
+    function openModal(country, price, flag) {
+      document.getElementById('modalCountry').innerText = country;
+      document.getElementById('modalPrice1').innerText = price;
+      document.getElementById('modalFlag').innerText = flag;
+      const modal = document.getElementById('planModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('planModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // Close on backdrop click
+    window.onclick = function(event) {
+      const modal = document.getElementById('planModal');
+      if (event.target === modal) {
+        closeModal();
+      }
+    }
+  </script>
+</body>
+</html>
